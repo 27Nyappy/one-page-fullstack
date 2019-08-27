@@ -47,7 +47,7 @@ app.post('/api/todos', (req, res) => {
     [todo.task]
     )
         .then(result => {
-            res.json(result.row[0]);
+            res.json(result.rows[0]);
         })
         .catch(err => {
             if(err.code === '23505') {
@@ -83,6 +83,26 @@ app.put('/api/todos/:id', (req, res) => {
                     error: `Task "${todo.task}" already exists`
                 });
             }
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+app.delete('/api/todos/:id', (req, res) => {
+    const id = req.params.id;
+
+    client.query(`
+        DELETE FROM todos
+        WHERE id = $1
+        RETURNING *;
+    `,
+    [id]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
             res.status(500).json({
                 error: err.message || err
             });

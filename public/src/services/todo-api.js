@@ -7,7 +7,7 @@ function fetchWithError(url, options) {
                 return response.json();
             }
             else {
-                return response.jason().then(json => {
+                return response.json().then(json => {
                     throw json.error;
                 });
             }
@@ -32,12 +32,19 @@ export function addTodo(todo) {
 }
 
 export function updateTodo(todo) {
-    const url = `${url}/TODOS/${todo.id}`;
-    return fetch(url, {
+    const url = `${URL}/todos/${todo.id}`;
+    return fetchWithError(url, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(todo)
+    });
+}
+
+export function removeTodo(id) {
+    const url = `${URL}/todos/${id}`;
+    return fetchWithError(url, {
+        method: 'DELETE'
     });
 }

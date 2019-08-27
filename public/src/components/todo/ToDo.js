@@ -5,11 +5,19 @@ class NewComponent extends Component {
     onRender(dom) {
         const todo = this.props.todo;
         const onUpdate = this.props.onUpdate;
+        const onRemove = this.props.onRemove;
         
         const statsButton = dom.querySelector('.status-button');
         statsButton.addEventListener('click', () => {
             todo.completed = !todo.completed;
             onUpdate(todo);
+        });
+
+        const deleteButton = dom.querySelector('.delete-button');
+        deleteButton.addEventListener('click', () => {
+            if(confirm(`Are you sure you want to delete "${todo.task}"?`)) {
+                onRemove(todo);
+            }
         });
     }
     
@@ -18,9 +26,10 @@ class NewComponent extends Component {
 
         return /*html*/`
             <li class="to-do">
-                <span class="${todo.completed ? 'incomplete' : ''}">${todo.task}</span>
+                <span class="${todo.completed ? 'complete' : ''}">${todo.task}</span>
                 <div>
-                    <button class="status-button">Mark as ${todo.completed ? 'Complete' : 'Incomplete'}</button>
+                    <button class="status-button">Mark as ${todo.completed ? 'Incomplete' : 'Complete'}</button>
+                    <button class="delete-button">Delete Task</button>
                 </div>
             </li>
         `;
