@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    flex-direction: row;
+    background: #d73a31;
+    align-items: center;
+    box-shadow: 0 0 2px black;
+}
+
+.logo {
+    width: 20%;
+    max-width: 100px;;
+}
+
+h1 {
+    font-size: 2rem;
+    flex-grow: 1;
+    margin: 1%;
+    text-decoration-line: underline;
+}
