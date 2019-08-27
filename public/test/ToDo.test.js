@@ -12,8 +12,10 @@ test('renders to do', assert => {
 
     const expected = /*html*/`
         <li class="to-do">
+            <div class="li-div">
             <span class="${todo.completed ? 'complete' : ''}">${todo.task}</span>
-            <div>
+            </div>
+            <div class="li-div">
                 <button class="status-button">Mark as ${todo.completed ? 'Incomplete' : 'Complete'}</button>
                 <button class="delete-button">Delete Task</button>
             </div>

@@ -1,0 +1,31 @@
+@media screen and (max-width: 550px) {
+    .to-dos-list {
+        width: 80%;
+        padding: 6%;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 700px) {
+    .to-dos-list {
+        width: 70%;
+        padding: 4%;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .to-dos-list {
+        width: 60%;
+        padding: 4%;
+    }
+}
+
+.to-dos-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #08708a;
+    box-shadow: 0 0 2px black;
+    border-radius: 5px;
+}
