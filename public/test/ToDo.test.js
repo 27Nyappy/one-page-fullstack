@@ -22,5 +22,5 @@ test('renders to do', assert => {
     const toDo = new ToDo({ todo });
     const html = toDo.renderHTML();
 
-    assert.htmlEqual(html,expected);
+    assert.htmlEqual(html, expected);
 });
