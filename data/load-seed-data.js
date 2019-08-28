@@ -8,7 +8,7 @@ Promise.all(
             VALUES ($1)
             RETURNING *;
         `,
-        [todo, todo.user_id])
+        [todo])
             .then(result => result.rows[0]);
     })
 )

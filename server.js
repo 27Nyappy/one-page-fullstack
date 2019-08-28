@@ -45,7 +45,6 @@ app.get('/api/todos', (req, res) => {
     client.query(`
         SELECT
             id,
-            user_id,
             task,
             completed
         FROM todos

@@ -11,7 +11,6 @@ client.query(`
 
     CREATE TABLE todos (
         id SERIAL PRIMARY KEY NOT NULL,
-        user_id INTEGER NOT NULL REFERENCES users(id),
         task VARCHAR(256) NOT NULL UNIQUE,
         completed BOOLEAN NOT NULL DEFAULT FALSE
     );

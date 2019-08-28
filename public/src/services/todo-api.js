@@ -1,6 +1,21 @@
+import store from './store.js';
+
 const URL = '/api';
 
+const token = store.getToken();
+if(!token && location.pathname !== '/auth.html') {
+    const searchParams = new URLSearchParams();
+    searchParams.set('redirect', location.pathname);
+    location = `auth.html?${searchParams.toString()}`;
+}
+
 function fetchWithError(url, options) {
+    if(token) {
+        options = options || {};
+        options.headers = options.headers || {};
+        options.headers.Authorization = token;
+    }
+
     return fetch(url, options)
         .then(response => {
             if(response.ok) {
@@ -46,5 +61,27 @@ export function removeTodo(id) {
     const url = `${URL}/todos/${id}`;
     return fetchWithError(url, {
         method: 'DELETE'
+    });
+}
+
+export function singUp(user) {
+    const url = `${URL}/auth/signup`;
+    return fetchWithError(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+    });
+}
+
+export function singIn(credentials) {
+    const url = `${URL}/auth/signin`;
+    return fetchWithError(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials)
     });
 }
