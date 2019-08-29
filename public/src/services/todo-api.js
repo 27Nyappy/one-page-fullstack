@@ -6,7 +6,7 @@ const token = store.getToken();
 if(!token && location.pathname !== '/auth.html') {
     const searchParams = new URLSearchParams();
     searchParams.set('redirect', location.pathname);
-    location = `auth.html?${searchParams.toString()}`;
+    location = `/auth.html`;
 }
 
 function fetchWithError(url, options) {
@@ -64,7 +64,7 @@ export function removeTodo(id) {
     });
 }
 
-export function singUp(user) {
+export function signUp(user) {
     const url = `${URL}/auth/signup`;
     return fetchWithError(url, {
         method: 'POST',
@@ -75,7 +75,7 @@ export function singUp(user) {
     });
 }
 
-export function singIn(credentials) {
+export function signIn(credentials) {
     const url = `${URL}/auth/signin`;
     return fetchWithError(url, {
         method: 'POST',

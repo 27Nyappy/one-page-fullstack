@@ -8,7 +8,7 @@ Promise.all(
             VALUES ($1)
             RETURNING *;
         `,
-        [todo])
+        [todo.task])
             .then(result => result.rows[0]);
     })
 )
