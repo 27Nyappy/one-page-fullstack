@@ -1,0 +1,5 @@
+button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0 0 2px black, 0 0 1px #aaa;
+}
